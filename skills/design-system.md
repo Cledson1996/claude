@@ -1,3 +1,15 @@
+---
+type: skill
+name: Design System
+description: Mapeia Figma para componentes @juscash/design-system (antd 6 + tokens JusCash). Ativa automaticamente ao criar UI.
+skillSlug: design-system
+phases: [E]
+trigger: automatico quando implementar telas, componentes UI ou receber link do Figma
+generated: 2026-03-10
+status: filled
+scaffoldVersion: "2.0.0"
+---
+
 # Skill: Design System
 
 Garante que toda implementação de UI use os componentes da biblioteca `@juscash/design-system`, especialmente ao trabalhar com Figma.

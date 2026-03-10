@@ -1,3 +1,15 @@
+---
+type: skill
+name: Context Generator
+description: Gera contexto completo do projeto via MCP ai-coders-context e condensa num CLAUDE.md
+skillSlug: context
+phases: [P]
+trigger: quando o usuário pedir para gerar contexto ou executar /context
+generated: 2026-03-10
+status: filled
+scaffoldVersion: "2.0.0"
+---
+
 # Skill: Context
 
 Gera contexto completo de um projeto usando o MCP ai-coders-context e condensa num CLAUDE.md.

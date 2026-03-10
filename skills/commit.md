@@ -1,3 +1,15 @@
+---
+type: skill
+name: Commit Message
+description: Gera mensagens de commit no padrão Conventional Commits com detecção de scope e Jira ID da branch
+skillSlug: commit
+phases: [E, C]
+trigger: quando o usuário pedir para commitar ou executar /commit
+generated: 2026-03-10
+status: filled
+scaffoldVersion: "2.0.0"
+---
+
 # Skill: Commit
 
 Gera mensagens de commit no padrão Conventional Commits, com ID do Jira quando disponível.
