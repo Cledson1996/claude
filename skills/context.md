@@ -89,6 +89,13 @@ E produzir o CLAUDE.md no seguinte formato:
 ## Decisões técnicas
 {Resumo do decisions: escolhas importantes e seus motivos}
 
+## Design System (se o projeto usar @juscash/design-system)
+- Importar componentes de `@juscash/design-system` (NUNCA do `antd` direto)
+- Ícones: usar `LucideIcons` de `@juscash/design-system`
+- Storybook: https://juscash.github.io/design-system/
+- Quando receber link do Figma, usar MCP Figma para extrair o design e mapear para componentes da biblioteca
+- Ver skill `/design-system` para lista completa de componentes
+
 ## Skills disponíveis
 - `/commit` — commit padronizado com Conventional Commits + Jira ID
 - `/pr` — PR com template e contexto do Jira
