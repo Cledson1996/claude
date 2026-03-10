@@ -6,7 +6,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
-SKILLS_DIR="$CLAUDE_DIR/skills"
+SKILLS_DIR="$CLAUDE_DIR/commands"
 
 echo "=== JusCash Claude Code Setup ==="
 echo ""
@@ -27,7 +27,7 @@ fi
 cp "$SCRIPT_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
 echo "[+] CLAUDE.md global instalado"
 
-# 3. Copiar skills
+# 3. Copiar skills (comandos ficam em ~/.claude/commands/)
 mkdir -p "$SKILLS_DIR"
 SKILL_COUNT=0
 for skill in "$SCRIPT_DIR/skills/"*.md; do
@@ -39,7 +39,7 @@ for skill in "$SCRIPT_DIR/skills/"*.md; do
   SKILL_COUNT=$((SKILL_COUNT + 1))
   echo "    -> $filename"
 done
-echo "[+] $SKILL_COUNT skills instaladas em $SKILLS_DIR"
+echo "[+] $SKILL_COUNT commands instalados em $SKILLS_DIR"
 
 # 4. Copiar agents
 AGENTS_DIR="$CLAUDE_DIR/agents"
@@ -73,7 +73,7 @@ echo "=== Setup completo ==="
 echo ""
 echo "Instalado:"
 echo "  - CLAUDE.md global em $CLAUDE_DIR/CLAUDE.md"
-echo "  - $SKILL_COUNT skills em $SKILLS_DIR/"
+echo "  - $SKILL_COUNT commands em $SKILLS_DIR/"
 echo "  - $AGENT_COUNT agents em $AGENTS_DIR/"
 echo "  - MCP ai-coders-context"
 echo ""

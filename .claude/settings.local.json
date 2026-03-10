@@ -21,7 +21,24 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(npx @ai-coders/context mcp:install)",
-      "WebFetch(domain:juscash.github.io)"
+      "WebFetch(domain:juscash.github.io)",
+      "mcp__d9dee8fd-34a4-4fb2-8f99-d94b08098c60__getConfluenceSpaces",
+      "mcp__d9dee8fd-34a4-4fb2-8f99-d94b08098c60__getConfluencePage",
+      "Bash(git add skills/docs.md README.md setup.sh CLAUDE.md)",
+      "Bash(git commit:*)",
+      "Bash(git push origin master)",
+      "Bash(git add skills/feature-done.md README.md CLAUDE.md setup.sh)",
+      "Bash(git add skills/start-feature.md README.md CLAUDE.md setup.sh)",
+      "Bash(git add agents/qa-agent.md skills/feature-done.md README.md setup.sh)",
+      "Bash(git add agents/devops-agent.md agents/onboarding-agent.md README.md CLAUDE.md setup.sh)",
+      "Bash(git rm --cached setup.sh)",
+      "Bash(git add setup.sh)",
+      "Bash(git add .gitattributes setup.sh)",
+      "Bash(git add .gitattributes)",
+      "Bash(git rm --cached -r .)",
+      "Bash(git reset HEAD)",
+      "Bash(git add .gitattributes CLAUDE.md README.md setup.sh skills/ agents/)",
+      "Bash(git add --renormalize .)"
     ]
   }
 }

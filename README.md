@@ -12,7 +12,7 @@ bash setup.sh
 
 O script instala automaticamente:
 - **CLAUDE.md global** — regras que valem para todos os projetos
-- **Skills** — comandos personalizados
+- **Skills** — comandos personalizados (instalados em `~/.claude/commands/`)
 - **MCP ai-coders-context** — contexto e workflows
 
 ## Skills
