@@ -41,7 +41,24 @@ for skill in "$SCRIPT_DIR/skills/"*.md; do
 done
 echo "[+] $SKILL_COUNT skills instaladas em $SKILLS_DIR"
 
-# 4. Instalar MCP ai-coders-context
+# 4. Copiar agents
+AGENTS_DIR="$CLAUDE_DIR/agents"
+mkdir -p "$AGENTS_DIR"
+AGENT_COUNT=0
+if ls "$SCRIPT_DIR/agents/"*.md 2>/dev/null | grep -v "exemplo-agent.md" > /dev/null; then
+  for agent in "$SCRIPT_DIR/agents/"*.md; do
+    filename=$(basename "$agent")
+    if [ "$filename" = "exemplo-agent.md" ]; then
+      continue
+    fi
+    cp "$agent" "$AGENTS_DIR/$filename"
+    AGENT_COUNT=$((AGENT_COUNT + 1))
+    echo "    -> $filename"
+  done
+fi
+echo "[+] $AGENT_COUNT agents instalados em $AGENTS_DIR"
+
+# 5. Instalar MCP ai-coders-context
 echo ""
 echo "[...] Instalando MCP ai-coders-context..."
 if npx @ai-coders/context mcp:install 2>/dev/null; then
@@ -50,13 +67,14 @@ else
   echo "[!] Falha ao instalar MCP (pode precisar de Node.js 20+)"
 fi
 
-# 5. Resumo
+# 6. Resumo
 echo ""
 echo "=== Setup completo ==="
 echo ""
 echo "Instalado:"
 echo "  - CLAUDE.md global em $CLAUDE_DIR/CLAUDE.md"
 echo "  - $SKILL_COUNT skills em $SKILLS_DIR/"
+echo "  - $AGENT_COUNT agents em $AGENTS_DIR/"
 echo "  - MCP ai-coders-context"
 echo ""
 echo "Skills disponiveis:"
@@ -67,5 +85,8 @@ echo "  /pr           — PR com template e contexto Jira"
 echo "  /review       — code review da branch antes de abrir PR"
 echo "  /docs         — gera docs locais e sincroniza com Confluence"
 echo "  /context      — gerar contexto do projeto"
+echo ""
+echo "Agents disponiveis:"
+echo "  @qa-agent     — review profundo + testes + criterios Jira"
 echo ""
 echo "Reinicie o Claude Code para aplicar as mudancas."

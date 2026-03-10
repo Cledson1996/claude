@@ -28,6 +28,12 @@ O script instala automaticamente:
 | `/context` | Gera contexto do projeto (CLAUDE.md + .context/) |
 | Design System | Ativo automaticamente ao criar UI — usa `@juscash/design-system` |
 
+## Agents
+
+| Agent | O que faz |
+|-------|-----------|
+| `@qa-agent` | Review profundo — cobertura de testes, criterios do Jira, qualidade e seguranca |
+
 ## Regras globais (CLAUDE.md)
 
 - Commits: `type(scope): descricao (TASK-ID)`
@@ -53,7 +59,7 @@ claude/
 │   ├── context.md      # /context
 │   └── design-system.md # regras de UI
 └── agents/
-    └── (em breve)
+    └── qa-agent.md     # @qa-agent
 ```
 
 ## Atualizar

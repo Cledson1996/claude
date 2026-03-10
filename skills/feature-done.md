@@ -12,7 +12,7 @@ scaffoldVersion: "2.0.0"
 
 # Skill: Feature Done
 
-Workflow completo para finalizar uma feature. Encadeia `/review` → `/docs` → `/commit` → `/pr` em sequência, pausando nos pontos que precisam de decisão do usuário.
+Workflow completo para finalizar uma feature. Encadeia `@qa-agent` → `/docs` → `/commit` → `/pr` em sequência, pausando nos pontos que precisam de decisão do usuário.
 
 ## Uso
 
@@ -51,59 +51,23 @@ Se o diff estiver vazio: avisar "Nenhuma diferença em relação à `{BASE}`. Na
 
 ---
 
-### Fase 1/4 — Review
+### Fase 1/4 — Review (via @qa-agent)
 
-Analisar o diff completo executando os 4 checks:
+Invocar o `@qa-agent` passando o contexto já coletado (diff, branch, card Jira).
 
-**Check A — Design System e Imports**
-- Import direto de `antd`? → ❌ Blocker — deve ser `@juscash/design-system`
-- Import de `@ant-design/icons`? → ❌ Blocker — deve ser `LucideIcons` de `@juscash/design-system`
-- Imports relativos com muitos `../`? → ⚠️ Sugerir alias
-
-**Check B — Padrões de código**
-- `console.log`, `console.error`, `debugger` esquecidos? → ⚠️
-- Funções com mais de 50 linhas? → ⚠️ Sugerir extração
-- Código comentado / código morto? → ⚠️
-- Lógica duplicada? → ⚠️
-- Naming conventions inconsistentes? → ⚠️
-
-**Check C — Testes**
-- Arquivos de lógica de negócio modificados sem testes correspondentes (`*.test.*`, `*.spec.*`)? → ⚠️
-- Novos fluxos ou funções públicas sem testes? → ⚠️
-- Testes existentes quebrados pelas mudanças? → ❌ Blocker
-
-**Check D — Segurança e qualidade**
-- Tokens, senhas ou chaves de API hardcoded? → ❌ Blocker
-- Variáveis de ambiente acessadas sem `process.env` ou sem fallback? → ⚠️
-- Try/catch ausente em operações assíncronas críticas? → ⚠️
-- Inputs sem validação? → ⚠️
-
-Se card Jira encontrado: verificar cada critério de aceite no diff, marcar `[x]` ou `[ ]`.
-
-**Apresentar relatório:**
-
-```
---- Fase 1/4: Review ---
-
-### Card Jira: {TASK-ID} — {título} ({tipo})
-#### Requisitos do card
-- [x] {critério implementado}
-- [ ] {critério NÃO encontrado}
-
-### ✅ Aprovado
-- {checks que passaram}
-
-### ⚠️ Atenção
-- {arquivo} linha {N}: {problema}
-
-### ❌ Bloqueadores
-- {arquivo} linha {N}: {problema}
-```
+O `@qa-agent` irá:
+- Verificar cobertura de testes por arquivo
+- Validar cada critério de aceite do Jira contra o código
+- Checar Design System, padrões, segurança e qualidade profunda
+- Gerar relatório completo com ✅ / ⚠️ / ❌ e sugestões de correção
 
 **Ponto de pausa — se houver blockers:**
 ```
+--- Fase 1/4: Review ---
+[relatório do @qa-agent]
+
 ❌ {N} blocker(s) encontrado(s). Corrija-os antes de continuar.
-Quer que eu aplique as correções automaticamente?
+Quer que o @qa-agent aplique as correções automaticamente?
 Quando terminar, responda "continuar".
 ```
 
@@ -112,8 +76,6 @@ Quando terminar, responda "continuar".
 ✅ Review aprovado — nenhum blocker.
 Prosseguindo para Docs...
 ```
-
-Para cada ⚠️, oferecer sugestão de correção. Perguntar se o usuário quer que sejam aplicadas automaticamente.
 
 ---
 
