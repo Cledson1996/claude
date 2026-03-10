@@ -33,6 +33,8 @@ O script instala automaticamente:
 | Agent | O que faz |
 |-------|-----------|
 | `@qa-agent` | Review profundo — cobertura de testes, criterios do Jira, qualidade e seguranca |
+| `@devops-agent` | Checklist de deploy — env vars, migrations, breaking changes e plano de rollback |
+| `@onboarding-agent` | Apresenta o projeto ao dev novo e responde duvidas sobre arquitetura e padroes |
 
 ## Regras globais (CLAUDE.md)
 
@@ -59,7 +61,9 @@ claude/
 │   ├── context.md      # /context
 │   └── design-system.md # regras de UI
 └── agents/
-    └── qa-agent.md     # @qa-agent
+    ├── qa-agent.md       # @qa-agent
+    ├── devops-agent.md   # @devops-agent
+    └── onboarding-agent.md # @onboarding-agent
 ```
 
 ## Atualizar

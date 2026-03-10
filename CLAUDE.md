@@ -51,3 +51,8 @@ Usar template padronizado com contexto do Jira. Executar `/pr` para gerar automa
 - `/docs` — gera docs locais em `docs/` e sincroniza com Confluence
 - `/context` — gera contexto do projeto (CLAUDE.md + .context/)
 - Design System — ativo automaticamente ao criar componentes UI
+
+## Agents disponíveis
+- `@qa-agent` — review profundo, cobertura de testes e critérios do Jira
+- `@devops-agent` — checklist de deploy: env vars, migrations, breaking changes, rollback
+- `@onboarding-agent` — apresenta o projeto e responde dúvidas de arquitetura
