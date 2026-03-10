@@ -17,7 +17,10 @@
       "Bash(git -C /c/projetos/claude push -u origin master)",
       "Bash(git -C /c/projetos/claude add skills/pull-request.md)",
       "Bash(git -C:*)",
-      "Bash(git -C /c/projetos/claude push)"
+      "Bash(git -C /c/projetos/claude push)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(npx @ai-coders/context mcp:install)"
     ]
   }
 }
