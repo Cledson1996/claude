@@ -21,6 +21,8 @@ O script instala automaticamente:
 |---------|-----------|
 | `/commit` | Gera commit no padrao Conventional Commits com Jira ID da branch |
 | `/pr` | Cria PR com template padronizado e contexto do card Jira |
+| `/review` | Code review completo da branch — padroes, imports, testes e requisitos do Jira |
+| `/docs` | Gera docs em MD na pasta `docs/` e sincroniza com o Confluence (espaco Tech) |
 | `/context` | Gera contexto do projeto (CLAUDE.md + .context/) |
 | Design System | Ativo automaticamente ao criar UI — usa `@juscash/design-system` |
 
@@ -42,6 +44,8 @@ claude/
 ├── skills/
 │   ├── commit.md       # /commit
 │   ├── pull-request.md # /pr
+│   ├── review.md       # /review
+│   ├── docs.md         # /docs
 │   ├── context.md      # /context
 │   └── design-system.md # regras de UI
 └── agents/

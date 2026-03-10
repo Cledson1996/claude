@@ -45,5 +45,7 @@ Usar template padronizado com contexto do Jira. Executar `/pr` para gerar automa
 ## Skills disponíveis
 - `/commit` — gera mensagem de commit padronizada com Jira ID
 - `/pr` — cria PR com template e contexto do Jira
+- `/review` — code review completo da branch antes de abrir PR
+- `/docs` — gera docs locais em `docs/` e sincroniza com Confluence
 - `/context` — gera contexto do projeto (CLAUDE.md + .context/)
 - Design System — ativo automaticamente ao criar componentes UI
