@@ -11,7 +11,13 @@
       "Bash(git -C /c/projetos log --oneline -3)",
       "Bash(git -C /c/projetos/claude init)",
       "Bash(git -C /c/projetos/claude add .)",
-      "Bash(git -C /c/projetos/claude commit -m \"initial commit: estrutura de skills e agents\")"
+      "Bash(git -C /c/projetos/claude commit -m \"initial commit: estrutura de skills e agents\")",
+      "Bash(gh repo create claude --private --description \"Skills e Agents do Claude Code\")",
+      "Bash(git -C /c/projetos/claude remote add origin https://github.com/Cledson1996/claude.git)",
+      "Bash(git -C /c/projetos/claude push -u origin master)",
+      "Bash(git -C /c/projetos/claude add skills/pull-request.md)",
+      "Bash(git -C:*)",
+      "Bash(git -C /c/projetos/claude push)"
     ]
   }
 }
