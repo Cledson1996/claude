@@ -1,19 +1,59 @@
-# Claude Skills & Agents
+# JusCash — Claude Code Setup
 
-Repositório de skills e agents personalizados para o Claude Code.
+Skills, agents e regras globais para o Claude Code no time da JusCash.
+
+## Setup
+
+```bash
+git clone https://github.com/Juscash/claude.git
+cd claude
+bash setup.sh
+```
+
+O script instala automaticamente:
+- **CLAUDE.md global** — regras que valem para todos os projetos
+- **Skills** — comandos personalizados
+- **MCP ai-coders-context** — contexto e workflows
+
+## Skills
+
+| Comando | O que faz |
+|---------|-----------|
+| `/commit` | Gera commit no padrao Conventional Commits com Jira ID da branch |
+| `/pr` | Cria PR com template padronizado e contexto do card Jira |
+| `/context` | Gera contexto do projeto (CLAUDE.md + .context/) |
+| Design System | Ativo automaticamente ao criar UI — usa `@juscash/design-system` |
+
+## Regras globais (CLAUDE.md)
+
+- Commits: `type(scope): descricao (TASK-ID)`
+- PRs: template com Jira
+- UI: sempre importar de `@juscash/design-system`
+- Icones: `LucideIcons` (nunca `@ant-design/icons`)
+- Idioma: portugues
+- Sem assinatura do Claude em nada
 
 ## Estrutura
 
 ```
 claude/
-├── skills/     # Skills (comandos /) para o Claude Code
-└── agents/     # Agents personalizados
+├── CLAUDE.md           # Regras globais (copiado para ~/.claude/)
+├── setup.sh            # Script de instalacao
+├── skills/
+│   ├── commit.md       # /commit
+│   ├── pull-request.md # /pr
+│   ├── context.md      # /context
+│   └── design-system.md # regras de UI
+└── agents/
+    └── (em breve)
 ```
 
-## Como usar
+## Atualizar
 
-### Skills
-Copie os arquivos de `skills/` para `~/.claude/skills/` (global) ou `.claude/skills/` (por projeto).
+Para pegar novas skills ou atualizar regras:
 
-### Agents
-Copie os arquivos de `agents/` para `~/.claude/agents/` (global) ou `.claude/agents/` (por projeto).
+```bash
+cd claude
+git pull
+bash setup.sh
+```
