@@ -1,0 +1,8 @@
+# Forçar LF para todos os arquivos de texto
+* text=auto eol=lf
+
+# Scripts sempre LF
+*.sh text eol=lf
+
+# Markdown sempre LF
+*.md text eol=lf
