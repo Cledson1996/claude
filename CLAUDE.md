@@ -43,6 +43,7 @@ Usar template padronizado com contexto do Jira. Executar `/pr` para gerar automa
 - O MCP ai-coders-context está disponível para análises profundas
 
 ## Skills disponíveis
+- `/feature-done` — workflow completo pós-feature: review → docs → commit → PR
 - `/commit` — gera mensagem de commit padronizada com Jira ID
 - `/pr` — cria PR com template e contexto do Jira
 - `/review` — code review completo da branch antes de abrir PR

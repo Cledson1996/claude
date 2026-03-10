@@ -19,6 +19,7 @@ O script instala automaticamente:
 
 | Comando | O que faz |
 |---------|-----------|
+| `/feature-done` | Workflow completo pos-feature: review → docs → commit → PR |
 | `/commit` | Gera commit no padrao Conventional Commits com Jira ID da branch |
 | `/pr` | Cria PR com template padronizado e contexto do card Jira |
 | `/review` | Code review completo da branch — padroes, imports, testes e requisitos do Jira |
@@ -42,6 +43,7 @@ claude/
 ├── CLAUDE.md           # Regras globais (copiado para ~/.claude/)
 ├── setup.sh            # Script de instalacao
 ├── skills/
+│   ├── feature-done.md # /feature-done
 │   ├── commit.md       # /commit
 │   ├── pull-request.md # /pr
 │   ├── review.md       # /review
