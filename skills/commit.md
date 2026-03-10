@@ -107,4 +107,6 @@ Após confirmação, execute:
 git commit -m "type(scope): descrição (TASK-ID)"
 ```
 
+**Importante:** nunca adicionar `Co-Authored-By`, assinatura do Claude ou qualquer metadado além da mensagem do commit. O commit deve conter apenas a mensagem gerada.
+
 Mostre o resultado do commit (hash e arquivos incluídos).

@@ -106,6 +106,8 @@ gh pr create --title "{TÍTULO DA TASK} - [{CÓDIGO-DA-TASK}]" --body "{CORPO DA
 
 Use HEREDOC para o body para preservar a formatação markdown.
 
+**Importante:** nunca adicionar menção ao Claude, co-autoria ou qualquer assinatura na PR. O conteúdo deve ser inteiramente do usuário.
+
 ## Exemplo
 
 ```
