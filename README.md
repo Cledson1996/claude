@@ -4,29 +4,32 @@ Plugin com skills, agents e regras globais para o workflow padrão da JusCash no
 
 ## Instalação
 
-### Como plugin (recomendado)
-
 ```bash
 git clone https://github.com/Juscash/claude.git
+cd claude
+node install.js          # instala globalmente (user scope)
+# ou: node install.js --scope project  (só para o projeto atual)
 ```
 
-**Opção 1 — Sessão temporária (desenvolvimento):**
+**Windows:**
+```powershell
+git clone https://github.com/Juscash/claude.git
+cd claude
+.\install.ps1
+```
+
+Reinicie o Claude Code após instalar.
+
+### Alternativa — sessão temporária
+
 ```bash
 claude --plugin-dir /caminho/para/claude
 ```
 
-**Opção 2 — Instalação persistente no projeto** (adicionar ao `.claude/settings.json` do projeto):
-```json
-{
-  "plugins": ["/caminho/para/claude"]
-}
-```
+### Atualizar
 
-**Opção 3 — Instalação global** (`~/.claude/settings.json`):
-```json
-{
-  "plugins": ["/caminho/para/claude"]
-}
+```bash
+cd claude && git pull && node install.js
 ```
 
 ### Após instalar
@@ -93,11 +96,21 @@ claude/                          # Raiz do plugin jc
     └── devops-agent.md          # @devops-agent
 ```
 
-## Atualizar
+## Estrutura interna
 
-```bash
-cd claude
-git pull
 ```
-
-Sem necessidade de rodar script — o plugin lê diretamente do repositório.
+claude/
+├── .claude-plugin/
+│   └── plugin.json              # Manifesto do plugin (name: "jc")
+├── skills/                      # 9 skills auto-descobertos
+│   ├── commit/      pr/         review/     docs/
+│   ├── context/     onboarding/ start-feature/
+│   ├── feature-done/ design-system/
+├── agents/
+│   ├── qa-agent.md
+│   └── devops-agent.md
+├── CLAUDE.md                    # Regras globais
+├── install.js                   # Script de instalação (cross-platform)
+├── install.sh                   # Wrapper bash
+└── install.ps1                  # Wrapper PowerShell
+```
