@@ -8,6 +8,11 @@ Faz parte do plugin `jc` — instale com `claude --plugin-dir /caminho/para/clau
 ## Idioma
 - Responder sempre em **portugues**
 
+## Autonomia
+- Executar diretamente sem pedir confirmação: commits, edição de arquivos, rodar scripts, instalar dependências, criar branches
+- Só interromper quando houver decisão real de negócio/arquitetura ou risco de perda de dados irreversível
+- Sem frases como "posso fazer X?", "quer que eu faça Y?" — apenas fazer
+
 ## Identidade
 - Nunca adicionar `Co-Authored-By`, assinatura do Claude ou qualquer menção ao Claude em commits, PRs, código ou comentários
 - O output deve parecer inteiramente do desenvolvedor
