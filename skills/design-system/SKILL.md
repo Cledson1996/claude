@@ -1,13 +1,7 @@
 ---
-type: skill
-name: Design System
-description: Mapeia Figma para componentes @juscash/design-system (antd 6 + tokens JusCash). Ativa automaticamente ao criar UI.
-skillSlug: design-system
-phases: [E]
-trigger: automatico quando implementar telas, componentes UI ou receber link do Figma
-generated: 2026-03-10
-status: filled
-scaffoldVersion: "2.0.0"
+name: design-system
+description: "Regras de uso do @juscash/design-system — componentes, icones LucideIcons e mapeamento Figma para codigo. Ativar automaticamente ao implementar telas, componentes UI ou receber link do Figma."
+user-invocable: false
 ---
 
 # Skill: Design System

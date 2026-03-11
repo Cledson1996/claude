@@ -1,13 +1,6 @@
 ---
-type: agent
-name: DevOps Agent
-description: Agente especializado em deploy — valida env vars, migrations, breaking changes e gera checklist de rollback
-agentSlug: devops-agent
-phases: [C]
-trigger: invocado antes de deploy em produção ou quando o usuário chamar @devops-agent
-generated: 2026-03-10
-status: filled
-scaffoldVersion: "2.0.0"
+name: devops-agent
+description: "Agente de DevOps especializado em preparação para deploy. Analisa o código e gera um checklist completo de deploy: variáveis de ambiente novas, migrations (reversíveis ou destrutivas), breaking changes em APIs/eventos/banco, dependências de infraestrutura e plano de rollback. Use antes de subir para staging ou produção, ou quando precisar avaliar o risco de um deploy."
 ---
 
 # Agent: DevOps Agent

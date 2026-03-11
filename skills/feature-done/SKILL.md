@@ -1,13 +1,7 @@
 ---
-type: skill
-name: Feature Done
-description: Workflow completo pós-feature — review, docs, commit e PR em sequência
-skillSlug: feature-done
-phases: [C]
-trigger: quando o usuário executar /feature-done após terminar uma feature
-generated: 2026-03-10
-status: filled
-scaffoldVersion: "2.0.0"
+name: feature-done
+description: "Workflow completo pos-feature — review via @qa-agent, docs, commit e PR em sequencia"
+disable-model-invocation: true
 ---
 
 # Skill: Feature Done
@@ -59,21 +53,21 @@ O `@qa-agent` irá:
 - Verificar cobertura de testes por arquivo
 - Validar cada critério de aceite do Jira contra o código
 - Checar Design System, padrões, segurança e qualidade profunda
-- Gerar relatório completo com ✅ / ⚠️ / ❌ e sugestões de correção
+- Gerar relatório completo com sugestões de correção
 
 **Ponto de pausa — se houver blockers:**
 ```
 --- Fase 1/4: Review ---
 [relatório do @qa-agent]
 
-❌ {N} blocker(s) encontrado(s). Corrija-os antes de continuar.
+{N} blocker(s) encontrado(s). Corrija-os antes de continuar.
 Quer que o @qa-agent aplique as correções automaticamente?
 Quando terminar, responda "continuar".
 ```
 
 **Se não houver blockers:**
 ```
-✅ Review aprovado — nenhum blocker.
+Review aprovado — nenhum blocker.
 Prosseguindo para Docs...
 ```
 
@@ -197,13 +191,13 @@ Após confirmação: executar `gh pr create --title "..." --body "$(cat <<'EOF' 
 ### Resumo final
 
 ```
-🚀 Feature Done!
+Feature Done!
 
-✅ Fase 1 — Review: aprovado ({N} warnings)
-✅ Fase 2 — Docs: atualizadas localmente + Confluence sincronizado
+Fase 1 — Review: aprovado ({N} warnings)
+Fase 2 — Docs: atualizadas localmente + Confluence sincronizado
              (ou: Confluence pulado)
-✅ Fase 3 — Commit: feat(auth): adiciona autenticação JWT (ENG-123)
-✅ Fase 4 — PR: https://github.com/{org}/{repo}/pull/{N}
+Fase 3 — Commit: feat(auth): adiciona autenticação JWT (ENG-123)
+Fase 4 — PR: https://github.com/{org}/{repo}/pull/{N}
 
 Card Jira: https://juscash.atlassian.net/browse/{TASK-ID}
 ```

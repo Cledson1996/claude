@@ -1,7 +1,7 @@
 # JusCash — Regras Globais do Claude Code
 
 Este arquivo configura o Claude Code para todos os projetos da JusCash.
-Instalado automaticamente via `setup.sh`.
+Faz parte do plugin `jc` — instale com `claude --plugin-dir /caminho/para/claude`.
 
 ---
 
@@ -42,17 +42,17 @@ Usar template padronizado com contexto do Jira. Executar `/pr` para gerar automa
 - Se o projeto não tiver `CLAUDE.md` local, sugerir executar `/context` para gerar
 - O MCP ai-coders-context está disponível para análises profundas
 
-## Skills disponíveis
-- `/start-feature` — inicia uma feature: busca card Jira, cria branch com ID e sugere plano
-- `/feature-done` — workflow completo pós-feature: review → docs → commit → PR
-- `/commit` — gera mensagem de commit padronizada com Jira ID
-- `/pr` — cria PR com template e contexto do Jira
-- `/review` — code review completo da branch antes de abrir PR
-- `/docs` — gera docs locais em `docs/` e sincroniza com Confluence
-- `/context` — gera contexto do projeto (CLAUDE.md + .context/)
+## Skills disponíveis (plugin `jc`)
+- `/jc:start-feature` — inicia uma feature: busca card Jira, cria branch com ID e sugere plano
+- `/jc:feature-done` — workflow completo pós-feature: review → docs → commit → PR
+- `/jc:commit` — gera mensagem de commit padronizada com Jira ID
+- `/jc:pr` — cria PR com template e contexto do Jira
+- `/jc:review` — code review completo da branch antes de abrir PR
+- `/jc:docs` — gera docs locais em `docs/` e sincroniza com Confluence
+- `/jc:context` — gera contexto do projeto (CLAUDE.md + .context/)
+- `/jc:onboarding` — apresenta o projeto e responde dúvidas de arquitetura
 - Design System — ativo automaticamente ao criar componentes UI
 
-## Agents disponíveis
+## Agents disponíveis (plugin `jc`)
 - `@qa-agent` — review profundo, cobertura de testes e critérios do Jira
 - `@devops-agent` — checklist de deploy: env vars, migrations, breaking changes, rollback
-- `@onboarding-agent` — apresenta o projeto e responde dúvidas de arquitetura

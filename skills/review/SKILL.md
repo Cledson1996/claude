@@ -1,13 +1,7 @@
 ---
-type: skill
-name: Code Review
-description: Revisa a branch completa — padrões, imports, testes e requisitos do Jira antes de abrir PR
-skillSlug: review
-phases: [E, C]
-trigger: quando o usuário pedir review ou executar /review antes de abrir PR
-generated: 2026-03-10
-status: filled
-scaffoldVersion: "2.0.0"
+name: review
+description: "Faz code review completo da branch — padroes, imports do design system, testes e requisitos do Jira. Usar antes de abrir PR."
+disable-model-invocation: true
 ---
 
 # Skill: Review
@@ -59,27 +53,27 @@ Se o diff estiver vazio, avisar: "Nenhuma diferença encontrada em relação à 
 Analise o diff completo verificando os seguintes pontos:
 
 **Check A — Design System e Imports**
-- Importações diretas de `antd`? → ❌ Bloqueador — deve ser `@juscash/design-system`
-- Importações de `@ant-design/icons`? → ❌ Bloqueador — deve ser `LucideIcons` de `@juscash/design-system`
-- Imports relativos com `../../../` muito longos? → ⚠️ Sugerir alias
+- Importações diretas de `antd`? → Bloqueador — deve ser `@juscash/design-system`
+- Importações de `@ant-design/icons`? → Bloqueador — deve ser `LucideIcons` de `@juscash/design-system`
+- Imports relativos com `../../../` muito longos? → Sugerir alias
 
 **Check B — Padrões de código**
 - Naming conventions condizentes com o restante do projeto (camelCase, PascalCase, etc.)?
-- Funções com mais de 50 linhas? → ⚠️ Sugerir extração
-- `console.log`, `console.error`, `debugger` esquecidos? → ⚠️ Remover antes da PR
-- Código comentado (blocos de código morto)? → ⚠️ Remover
-- Lógica duplicada em mais de um lugar? → ⚠️ Sugerir extração
+- Funções com mais de 50 linhas? → Sugerir extração
+- `console.log`, `console.error`, `debugger` esquecidos? → Remover antes da PR
+- Código comentado (blocos de código morto)? → Remover
+- Lógica duplicada em mais de um lugar? → Sugerir extração
 
 **Check C — Testes**
-- Arquivos de lógica de negócio foram modificados sem testes correspondentes (`*.test.*`, `*.spec.*`)? → ⚠️ Atenção
-- Novos fluxos ou funções públicas sem testes? → ⚠️ Atenção
-- Testes existentes quebrados pelas mudanças? → ❌ Bloqueador
+- Arquivos de lógica de negócio foram modificados sem testes correspondentes (`*.test.*`, `*.spec.*`)? → Atenção
+- Novos fluxos ou funções públicas sem testes? → Atenção
+- Testes existentes quebrados pelas mudanças? → Bloqueador
 
 **Check D — Segurança e qualidade**
-- Tokens, senhas, chaves de API hardcoded? → ❌ Bloqueador
-- Variáveis de ambiente acessadas diretamente sem `process.env` ou sem fallback? → ⚠️ Atenção
-- Try/catch ausente em operações assíncronas críticas? → ⚠️ Atenção
-- Inputs sem validação? → ⚠️ Atenção
+- Tokens, senhas, chaves de API hardcoded? → Bloqueador
+- Variáveis de ambiente acessadas diretamente sem `process.env` ou sem fallback? → Atenção
+- Try/catch ausente em operações assíncronas críticas? → Atenção
+- Inputs sem validação? → Atenção
 
 ### Passo 4 — Validar contra requisitos do Jira
 
@@ -103,36 +97,36 @@ Base: `{branch-base}` | {N} arquivos alterados | {N} commits
 
 ---
 
-### ✅ Aprovado
+### Aprovado
 - Imports todos de `@juscash/design-system`
 - Naming conventions consistentes
 - {outros checks aprovados}
 
-### ⚠️ Atenção (não bloqueiam PR mas merecem correção)
+### Atenção (não bloqueiam PR mas merecem correção)
 - `src/components/Form.tsx` linha 45: `console.log` esquecido
 - `src/hooks/useUser.ts`: função `handleSubmit` com 60 linhas — considere extrair
 - {outros itens}
 
-### ❌ Bloqueadores (corrigir antes da PR)
+### Bloqueadores (corrigir antes da PR)
 - `src/pages/Login.tsx` linha 12: import direto de `antd` — usar `@juscash/design-system`
 - {outros bloqueadores}
 
 ---
-Pronto para PR? {✅ Sim | ❌ Não — corrija os bloqueadores acima}
+Pronto para PR? {Sim | Não — corrija os bloqueadores acima}
 Após corrigir: execute `/pr` para criar a PR.
 ```
 
 ### Passo 6 — Sugerir correções
 
-Para cada item de ⚠️ e ❌, ofereça a correção diretamente. Exemplo:
+Para cada item de atenção e bloqueador, ofereça a correção diretamente. Exemplo:
 
 ```
 Para corrigir o import bloqueador em `src/pages/Login.tsx`:
 
-// ❌ Antes
+// Antes
 import { Button } from 'antd'
 
-// ✅ Depois
+// Depois
 import { Button } from '@juscash/design-system'
 ```
 

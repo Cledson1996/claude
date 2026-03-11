@@ -1,13 +1,8 @@
 ---
-type: skill
-name: Pull Request
-description: Gera PRs padronizadas com template, contexto do Jira e análise de código
-skillSlug: pr
-phases: [C]
-trigger: quando o usuário pedir para criar PR ou executar /pr
-generated: 2026-03-10
-status: filled
-scaffoldVersion: "2.0.0"
+name: pr
+description: "Cria PR com template padronizado e contexto do card Jira"
+argument-hint: "[TASK-ID]"
+disable-model-invocation: true
 ---
 
 # Skill: Pull Request

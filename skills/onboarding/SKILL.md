@@ -1,30 +1,25 @@
 ---
-type: agent
-name: Onboarding Agent
-description: Agente de boas-vindas — apresenta o projeto ao dev novo, explica a arquitetura e responde dúvidas com base no contexto
-agentSlug: onboarding-agent
-phases: [P]
-trigger: invocado quando um dev novo quer entender o projeto ou quando o usuário chamar @onboarding-agent
-generated: 2026-03-10
-status: filled
-scaffoldVersion: "2.0.0"
+name: onboarding
+description: "Apresenta o projeto ao dev novo — explica arquitetura, padroes, estrutura de pastas e responde duvidas. Usar quando um dev novo chegar ao projeto."
+argument-hint: "[pergunta sobre o projeto]"
+disable-model-invocation: true
 ---
 
-# Agent: Onboarding Agent
+# Skill: Onboarding
 
 Agente especializado em integrar novos desenvolvedores ao projeto. Lê o contexto do projeto (CLAUDE.md, .context/, docs/, código), apresenta a arquitetura, explica os padrões do time e responde perguntas sobre como as coisas funcionam.
 
 ## Uso
 
 ```
-@onboarding-agent
-@onboarding-agent "como funciona o módulo de autenticação?"
-@onboarding-agent "onde fica a lógica de pagamento?"
+/onboarding
+/onboarding "como funciona o módulo de autenticação?"
+/onboarding "onde fica a lógica de pagamento?"
 ```
 
 ## Instruções para o Claude
 
-Quando o Onboarding Agent for invocado, executar o seguinte fluxo:
+Quando o `/onboarding` for invocado, executar o seguinte fluxo:
 
 ### 1. Coletar contexto do projeto
 
@@ -62,10 +57,10 @@ Com base nos arquivos lidos, identificar:
 
 ### 3. Apresentar o projeto
 
-Se o usuário não fez uma pergunta específica (apenas `@onboarding-agent`), apresentar:
+Se o usuário não fez uma pergunta específica (apenas `/onboarding`), apresentar:
 
 ```
-## Bem-vindo ao {nome do projeto}! 👋
+## Bem-vindo ao {nome do projeto}!
 
 ### O que é este projeto?
 {descrição do serviço e seu papel no contexto da JusCash}
@@ -109,7 +104,7 @@ Tem alguma dúvida específica? Pode me perguntar sobre qualquer parte do projet
 
 ### 4. Responder perguntas específicas
 
-Se o usuário fez uma pergunta (`@onboarding-agent "como funciona X?"`):
+Se o usuário fez uma pergunta (`/onboarding "como funciona X?"`):
 
 1. Buscar nos arquivos de contexto e no código as informações relevantes:
    - `.context/docs/` — documentação gerada

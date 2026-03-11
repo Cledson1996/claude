@@ -1,13 +1,8 @@
 ---
-type: skill
-name: Start Feature
-description: Inicia uma feature — busca card Jira, cria branch com o ID, carrega contexto e sugere plano
-skillSlug: start-feature
-phases: [P]
-trigger: quando o usuário executar /start-feature para começar a trabalhar numa task
-generated: 2026-03-10
-status: filled
-scaffoldVersion: "2.0.0"
+name: start-feature
+description: "Inicia uma feature — busca card Jira, cria branch com o ID, carrega contexto e sugere plano de implementacao"
+argument-hint: "[TASK-ID ou URL Jira]"
+disable-model-invocation: true
 ---
 
 # Skill: Start Feature
@@ -45,7 +40,7 @@ Qual é o ID ou link do card Jira que vai trabalhar?
 
 Mostrar resumo do card:
 ```
-📋 {TASK-ID} — {título}
+{TASK-ID} — {título}
 Tipo: {Story/Bug/Task} | Prioridade: {Alta/Média/Baixa} | Status: {To Do/In Progress}
 
 {descrição resumida — primeiras linhas}
@@ -83,7 +78,7 @@ Confirma este nome ou informe outro?
 
 Se houver mudanças não commitadas, avisar:
 ```
-⚠️ Há mudanças não commitadas na branch atual.
+Há mudanças não commitadas na branch atual.
 Quer commitar ou descartar antes de criar a nova branch?
 ```
 
@@ -97,7 +92,7 @@ git checkout -b {nome-da-branch} {branch-base}
 
 Confirmar criação:
 ```
-✅ Branch `feature/ENG-123-autenticacao-jwt` criada a partir de `development`
+Branch `feature/ENG-123-autenticacao-jwt` criada a partir de `development`
 ```
 
 Se o usuário optou por não criar branch, continuar na branch atual.

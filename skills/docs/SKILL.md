@@ -1,13 +1,7 @@
 ---
-type: skill
-name: Documentation
-description: Gera docs em MD na pasta docs/ do projeto e sincroniza com o Confluence (espaço Tech)
-skillSlug: docs
-phases: [C]
-trigger: quando o usuário executar /docs após terminar uma feature
-generated: 2026-03-10
-status: filled
-scaffoldVersion: "2.0.0"
+name: docs
+description: "Gera documentacao tecnica em docs/ e sincroniza com Confluence (espaco Tech). Usar apos implementar uma feature."
+disable-model-invocation: true
 ---
 
 # Skill: Docs
@@ -77,8 +71,6 @@ Para cada arquivo de docs afetado, gerar conteúdo em Markdown seguindo o templa
 
 **Template: Backend Node.js / TypeScript**
 
-Use esta estrutura ao criar ou atualizar docs de projeto Node.js:
-
 ```markdown
 # {Nome do Projeto}
 
@@ -129,8 +121,6 @@ Links úteis, ADRs, decisões técnicas documentadas.
 
 **Template: Backend Python**
 
-Use esta estrutura para projetos Python:
-
 ```markdown
 # {Nome do Projeto}
 
@@ -180,8 +170,6 @@ Links e decisões técnicas.
 ---
 
 **Template: EDA (Event-Driven Architecture)**
-
-Use esta estrutura para documentar fluxos ou módulos EDA:
 
 ```markdown
 # {Nome do Fluxo / Serviço}
@@ -268,13 +256,13 @@ Para cada arquivo que o usuário quiser publicar:
 Mostrar resumo final:
 
 ```
-✅ docs/modules/auth.md — salvo localmente
-✅ Confluence: "Auth Module" — sincronizado
-   https://juscash.atlassian.net/wiki/spaces/DT/pages/...
+docs/modules/auth.md — salvo localmente
+Confluence: "Auth Module" — sincronizado
+  https://juscash.atlassian.net/wiki/spaces/DT/pages/...
 
-✅ docs/api.md — salvo localmente
-✅ Confluence: "API Reference" — sincronizado
-   https://juscash.atlassian.net/wiki/spaces/DT/pages/...
+docs/api.md — salvo localmente
+Confluence: "API Reference" — sincronizado
+  https://juscash.atlassian.net/wiki/spaces/DT/pages/...
 
 Lembre-se de commitar os docs locais:
   git add docs/

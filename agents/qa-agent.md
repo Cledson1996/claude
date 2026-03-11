@@ -1,13 +1,6 @@
 ---
-type: agent
-name: QA Agent
-description: Agente especializado em qualidade — review profundo, cobertura de testes e validação dos critérios de aceite do Jira
-agentSlug: qa-agent
-phases: [E, C]
-trigger: invocado pelo /feature-done ou diretamente pelo usuário para validação completa antes do PR
-generated: 2026-03-10
-status: filled
-scaffoldVersion: "2.0.0"
+name: qa-agent
+description: "Agente de QA especializado em qualidade de código. Faz review profundo com cobertura de testes e valida os critérios de aceite do Jira. Use para validar uma feature antes de abrir PR, verificar cobertura de testes de novos arquivos, checar se todos os critérios de aceite do card estão implementados, ou detectar blockers de qualidade como imports diretos de antd, tokens hardcoded e erros silenciados."
 ---
 
 # Agent: QA Agent
