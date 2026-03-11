@@ -59,7 +59,11 @@ function copyDir(src, dest) {
 
 console.log('Instalando plugin jc da JusCash...\n');
 
-// 1. Copiar plugin para o cache do Claude Code
+// 1. Limpar cache antigo e copiar plugin atualizado
+if (fs.existsSync(CACHE_DIR)) {
+  fs.rmSync(CACHE_DIR, { recursive: true, force: true });
+  console.log('Cache antigo removido.');
+}
 console.log(`Copiando para cache: ${CACHE_DIR}`);
 copyDir(PLUGIN_DIR, CACHE_DIR);
 

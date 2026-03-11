@@ -51,6 +51,21 @@ Um projeto pode ser múltiplos tipos (ex: Node.js + EDA).
 2. Listar arquivos `.md` existentes em `docs/`
 3. Com base no diff e no tipo do projeto, identificar quais arquivos precisam ser criados ou atualizados
 
+**Se `docs/` não existir ou estiver vazia (nenhum `.md` encontrado):**
+
+Perguntar ao usuário:
+```
+Não encontrei docs locais em docs/.
+
+Já existe documentação deste projeto no Confluence?
+- Se sim, informe o link da página (ou das páginas) para eu importar o conteúdo como ponto de partida.
+- Se não, vou gerar a documentação do zero com base no código.
+```
+
+Aguardar resposta:
+- **Se o usuário fornecer link(s) do Confluence**: extrair o `pageId` da URL (último segmento numérico, ex: `.../pages/123456789`) e usar `getConfluencePage` com `cloudId: "63422ba0-3fba-4a86-916a-7a6abc3fb31f"` e `contentFormat: "markdown"` para cada página informada. Usar o conteúdo retornado como base para os arquivos MD locais — enriquecendo com o que está no código atual.
+- **Se o usuário disser que não existe**: seguir para o Passo 4 e gerar do zero.
+
 **Estrutura padrão de `docs/`:**
 ```
 docs/
