@@ -101,16 +101,40 @@ Se o usuário optou por não criar branch, continuar na branch atual.
 
 Verificar se existe `CLAUDE.md` na raiz do projeto:
 - **Se existir**: ler e usar como contexto — mencionar ao usuário que o contexto foi carregado
-- **Se não existir**: sugerir: "Este projeto não tem CLAUDE.md. Quer executar `/context` para gerar agora?"
+- **Se não existir CLAUDE.md nem `.context/`**: executar `/jc:context` automaticamente para gerar (seguir regra de autonomia)
+- **Se existir CLAUDE.md mas não `.context/`**: usar CLAUDE.md e continuar
 
 Se existir `.context/docs/` (gerado pelo MCP ai-coders-context), ler os docs relevantes para a feature:
 - `architecture.md` — entender onde encaixar a implementação
 - `patterns.md` — convenções a seguir
 - `modules/` — módulos relacionados ao que será implementado
 
+**Detectar tech stack do projeto:**
+- Ler `package.json` (campos `dependencies` e `devDependencies`) ou `pyproject.toml`
+- Identificar frameworks e bibliotecas principais (React, Next.js, NestJS, Prisma, TypeORM, Zod, etc.)
+- Guardar lista para uso no Passo 5.5
+
+### Passo 5.5 — Buscar documentação atualizada via Context7
+
+Usar as ferramentas do Context7 (MCP) para buscar docs relevantes das bibliotecas que serão usadas na feature.
+
+1. **Consolidar bibliotecas relevantes:**
+   - Do `package.json`: frameworks e bibliotecas principais do projeto
+   - Do card Jira: tecnologias mencionadas no título/descrição (ex: "JWT", "Passport", "Stripe", "Redis", "GraphQL")
+   - Limitar a **3-4 bibliotecas mais relevantes** para esta feature específica (filtrar utilitários como lodash, uuid, etc.)
+
+2. **Para cada biblioteca relevante:**
+   - Usar `resolve-library-id` do Context7 para resolver o nome da biblioteca para um ID
+   - Usar `query-docs` do Context7 com uma query específica baseada no que a feature precisa
+     - Exemplo: se o card é sobre autenticação e o projeto usa Passport → query: "authentication middleware setup"
+     - Exemplo: se o card é sobre validação e o projeto usa Zod → query: "schema validation with transform"
+   - Guardar os snippets de código e exemplos retornados
+
+3. **Se Context7 não estiver disponível** (MCP não registrado, npx falha, rede offline): pular este passo silenciosamente e continuar. Não bloquear o fluxo.
+
 ### Passo 6 — Sugerir plano de implementação
 
-Com base no card Jira + contexto do projeto, sugerir um plano de implementação:
+Com base no card Jira + contexto do projeto + docs do Context7, sugerir um plano de implementação:
 
 ```
 ## Plano: {TASK-ID} — {título}
@@ -122,6 +146,14 @@ Com base no card Jira + contexto do projeto, sugerir um plano de implementação
 - [ ] {critério 1}
 - [ ] {critério 2}
 - [ ] {critério 3}
+
+### Tech stack relevante para esta feature
+- {biblioteca 1} v{versão} — {para que será usada nesta feature}
+- {biblioteca 2} v{versão} — {para que será usada nesta feature}
+
+### Referência de APIs/Bibliotecas
+{snippets relevantes do Context7, organizados por biblioteca}
+{se Context7 não esteve disponível, omitir esta seção}
 
 ### Arquivos a criar/modificar (estimativa)
 - `src/{modulo}/` — {o que criar/alterar}
@@ -138,6 +170,7 @@ Com base no card Jira + contexto do projeto, sugerir um plano de implementação
 ### Pontos de atenção
 - {riscos ou dependências identificados}
 - {padrões específicos do projeto a seguir}
+- {versões de bibliotecas e possíveis incompatibilidades}
 ```
 
 Perguntar ao usuário:

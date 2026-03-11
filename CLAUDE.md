@@ -44,11 +44,19 @@ Usar template padronizado com contexto do Jira. Executar `/pr` para gerar automa
 - Link de card: `https://juscash.atlassian.net/browse/{TASK-ID}`
 
 ## Contexto de projeto
-- Se o projeto não tiver `CLAUDE.md` local, sugerir executar `/context` para gerar
+- Se o projeto não tiver `CLAUDE.md` local, executar `/jc:context` automaticamente para gerar
 - O MCP ai-coders-context está disponível para análises profundas
 
+## Documentação de bibliotecas (Context7)
+- MCP Context7 (`@upstash/context7-mcp`) disponível automaticamente via plugin `jc`
+- Ao implementar código com bibliotecas externas, buscar docs atualizados:
+  1. `resolve-library-id` para resolver nome da biblioteca → ID do Context7
+  2. `query-docs` para buscar documentação e exemplos de código atualizados
+- Usar para: React, Next.js, NestJS, Prisma, e qualquer biblioteca referenciada no card Jira ou package.json
+- Não bloquear se Context7 não estiver disponível — usar conhecimento próprio como fallback
+
 ## Skills disponíveis (plugin `jc`)
-- `/jc:start-feature` — inicia uma feature: busca card Jira, cria branch com ID e sugere plano
+- `/jc:start-feature` — inicia feature: Jira → branch → contexto → Context7 docs → plano
 - `/jc:feature-done` — workflow completo pós-feature: review → docs → commit → PR
 - `/jc:commit` — gera mensagem de commit padronizada com Jira ID
 - `/jc:pr` — cria PR com template e contexto do Jira

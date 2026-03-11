@@ -44,11 +44,21 @@ Skills ficam disponíveis com prefixo `/jc:` e agents carregam automaticamente:
 @devops-agent
 ```
 
+## MCP Servers incluídos
+
+O plugin auto-configura via `.mcp.json`:
+
+| Server | Uso |
+|--------|-----|
+| `@upstash/context7-mcp` | Documentação atualizada de bibliotecas (React, Next.js, NestJS, Prisma, etc.) |
+
+O Context7 é usado automaticamente pelo `/jc:start-feature` para buscar docs das bibliotecas do projeto, e proativamente durante implementação de código.
+
 ## Skills
 
 | Comando | O que faz |
 |---------|-----------|
-| `/jc:start-feature [TASK-ID]` | Inicia uma feature — busca card Jira, cria branch com ID e sugere plano |
+| `/jc:start-feature [TASK-ID]` | Inicia feature — Jira → branch → contexto → Context7 docs → plano |
 | `/jc:feature-done` | Workflow completo pos-feature: review → docs → commit → PR |
 | `/jc:commit` | Gera commit no padrao Conventional Commits com Jira ID da branch |
 | `/jc:pr [TASK-ID]` | Cria PR com template padronizado e contexto do card Jira |
@@ -80,6 +90,7 @@ Skills ficam disponíveis com prefixo `/jc:` e agents carregam automaticamente:
 claude/                          # Raiz do plugin jc
 ├── .claude-plugin/
 │   └── plugin.json              # Manifesto do plugin
+├── .mcp.json                    # MCP servers (Context7)
 ├── CLAUDE.md                    # Regras globais
 ├── skills/
 │   ├── start-feature/SKILL.md   # /jc:start-feature
@@ -102,6 +113,7 @@ claude/                          # Raiz do plugin jc
 claude/
 ├── .claude-plugin/
 │   └── plugin.json              # Manifesto do plugin (name: "jc")
+├── .mcp.json                    # Context7 MCP auto-configurado
 ├── skills/                      # 9 skills auto-descobertos
 │   ├── commit/      pr/         review/     docs/
 │   ├── context/     onboarding/ start-feature/
